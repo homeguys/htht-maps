@@ -40,7 +40,8 @@ export default defineComponent({
         <div>
           <div id='nav'>
             <router-link to='/'>Home</router-link> |<router-link to='/cesium'>Cesium</router-link> |<router-link to='/ol'>OpenLayers</router-link> |
-            <router-link to='/mapbox-gl'>MapBox-gl</router-link>
+            <router-link to='/mapbox-gl'>MapBox-gl</router-link>｜
+            <router-link to='/demo'>Demo</router-link>
           </div>
           <router-view />
           <MonacoEditor code={code} onChange={handleCodeChange} title='schema' class={classes.editor} />
