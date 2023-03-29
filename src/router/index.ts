@@ -2,28 +2,24 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/',
+    name: 'Zhihu',
+    component: () => import(/* webpackChunkName: "zhihu" */ '../views/Zhihu/index.vue')
+  },
+  {
     path: '/cesium',
     name: 'Cesium',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Cesium.vue')
+    component: () => import(/* webpackChunkName: "cesium" */ '../views/Cesium.vue')
   },
   {
     path: '/ol',
     name: 'OL',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "cesium" */ '../views/OL.vue')
+    component: () => import(/* webpackChunkName: "ol" */ '../views/OL.vue')
   },
   {
     path: '/mapbox-gl',
     name: 'mapbox-gl',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "cesium" */ '../views/MapBox-gl.vue')
+    component: () => import(/* webpackChunkName: "mapbox" */ '../views/MapBox-gl.vue')
   },
   {
     path: '/editor',

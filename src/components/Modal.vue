@@ -8,7 +8,9 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'Modal',
   props: {
     isOpen: Boolean
@@ -26,7 +28,7 @@ export default {
       closeBtnClick
     }
   }
-}
+})
 </script>
 
 <style scoped lang="less">
