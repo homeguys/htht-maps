@@ -26,6 +26,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "cesium" */ '../views/MapBox-gl.vue')
   },
   {
+    path: '/editor',
+    name: 'Editor',
+    component: () => import(/* webpackChunkName: "editor" */ '../views/Editor')
+  },
+  {
     path: '/demo',
     name: 'Demo',
     component: () => import(/* webpackChunkName: "demo" */ '../views/Demo.vue')
