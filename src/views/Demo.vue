@@ -15,6 +15,10 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable @typescript-eslint/no-inferrable-types */
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import AsyncShow from '@/components/AsyncShow'
 import Modal from '@/components/Modal.vue'
 import { ref } from 'vue'

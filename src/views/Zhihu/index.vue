@@ -1,11 +1,14 @@
 <template>
   <section id="zhihu" class="container">
-    <ColumnList :list="list"></ColumnList>
+    <!-- <ColumnList :list="list"></ColumnList> -->
+    <a-button type="primary">Primary</a-button>
+    <a-button type="primary" loading>Loading</a-button>
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { Button } from 'ant-design-vue'
 import ColumnList, { ColumnProps } from '@/components/Zhihu/ColumnList.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -33,7 +36,8 @@ const testData: ColumnProps[] = [
 export default defineComponent({
   name: 'Index',
   components: {
-    ColumnList
+    // ColumnList,
+    AButton: Button
   },
   setup() {
     return {
