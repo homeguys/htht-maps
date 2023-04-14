@@ -19,7 +19,8 @@ module.exports = {
     'semi': 'off',
     'no-undef': 'off',
     'object-curly-newline': 'off',
-    'no-unused-vars': 'warn'
+    'no-unused-vars': 'warn',
+    'vue/no-unused-components': 'warn'
   },
   overrides: [
     {
