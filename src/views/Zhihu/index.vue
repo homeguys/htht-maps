@@ -1,8 +1,9 @@
 <template>
-  <section id="zhihu" class="container">
-    <!-- <ColumnList :list="list"></ColumnList> -->
+  <section id="zhihu">
     <a-button type="primary">Primary</a-button>
-    <a-button type="primary" loading>Loading</a-button>
+    <!-- <ColumnList :list="list"></ColumnList> -->
+    <!-- <a-button type="primary">Primary</a-button>
+    <a-button type="primary" loading>Loading</a-button> -->
   </section>
 </template>
 
@@ -46,3 +47,9 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="less">
+#zhihu {
+  font-size: 12px;
+}
+</style>

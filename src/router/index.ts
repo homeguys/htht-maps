@@ -2,7 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '/zhihu',
     name: 'Zhihu',
     component: () => import(/* webpackChunkName: "zhihu" */ '../views/Zhihu/index.vue')
   },

@@ -1,4 +1,5 @@
 <template>
+  <section>知乎专栏</section>
   <ul>
     <li v-for="column in list" :key="column.id">
       <img :src="column.avatar" :alt="column.title" />
