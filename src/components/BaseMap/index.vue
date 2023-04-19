@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import OLMap from '@/utils/OLMap/OLMap'
-import OLWMS from '@/utils/OLMap/OLWMS'
+import OLMap from '@/utils/OLMap/OLMap';
+import OLWMS from '@/utils/OLMap/OLWMS';
 
 export default {
   name: 'BaseMap',
@@ -20,25 +20,25 @@ export default {
     params: {
       type: Object,
       data() {
-        return {}
-      }
-    }
+        return {};
+      },
+    },
   },
   mounted() {
-    const { init } = this.params
+    const { init } = this.params;
 
-    const oLMap = new OLMap({ init })
+    const oLMap = new OLMap({ init });
 
     // 加载矢量边界和湖泊河流
-    const oLWMS = new OLWMS(oLMap)
+    const oLWMS = new OLWMS(oLMap);
     oLWMS.addWMSLayer({
       url: process.env.VUE_APP_GEOSERVER_IP,
       params: {
-        layers: 'jaCountyTown'
-      }
-    })
-  }
-}
+        layers: 'jaCountyTown',
+      },
+    });
+  },
+};
 </script>
 
 <style lang="less">

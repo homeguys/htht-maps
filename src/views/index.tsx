@@ -1,10 +1,10 @@
 import { defineComponent } from 'vue';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from '../components/NavBar/index.vue';
 
 export default defineComponent({
   setup() {
     return () => {
-      return <router-view />;
+      return <NavBar />;
     };
   },
 });

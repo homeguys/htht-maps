@@ -8,27 +8,27 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'Modal',
   props: {
-    isOpen: Boolean
+    isOpen: Boolean,
   },
   emits: {
-    'close-modal': null
+    'close-modal': null,
   },
   setup(props, context) {
     const closeBtnClick = () => {
-      console.warn('context', context)
-      context.emit('close-modal')
-    }
+      console.warn('context', context);
+      context.emit('close-modal');
+    };
 
     return {
-      closeBtnClick
-    }
-  }
-})
+      closeBtnClick,
+    };
+  },
+});
 </script>
 
 <style scoped lang="less">

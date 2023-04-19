@@ -6,61 +6,61 @@
  * @Description: openlayers mark点位
  * @FilePath: \src\utils\OLMap\OLMarkPoints.js
  */
-import Feature from 'ol/Feature'
-import Point from 'ol/geom/Point'
-import VectorSource from 'ol/source/Vector'
-import Overlay from 'ol/Overlay'
-import { Icon, Style } from 'ol/style'
-import { Vector as VectorLayer } from 'ol/layer'
+import Feature from 'ol/Feature';
+import Point from 'ol/geom/Point';
+import VectorSource from 'ol/source/Vector';
+import Overlay from 'ol/Overlay';
+import { Icon, Style } from 'ol/style';
+import { Vector as VectorLayer } from 'ol/layer';
 // import { unByKey } from 'ol/Observable';
-import OLMap from '@/utils/OLMap/OLMap'
+import OLMap from '@/utils/OLMap/OLMap';
 
 class OLMarkPoints {
   constructor() {
-    this.map = new OLMap()
-    this.markPointsLayer = null
-    this.pointClick = null
-    this.pointOverlay = null
-    this.pointFeatures = []
+    this.map = new OLMap();
+    this.markPointsLayer = null;
+    this.pointClick = null;
+    this.pointOverlay = null;
+    this.pointFeatures = [];
   }
 
   // 增加标记点
   add(markPoints = []) {
-    this.pointFeatures = []
+    this.pointFeatures = [];
     markPoints.forEach((item) => {
-      const { lon, lat, icon } = item
-      const coor = [lon, lat]
+      const { lon, lat, icon } = item;
+      const coor = [lon, lat];
 
       // 定义feature点
       const iconFeature = new Feature({
         geometry: new Point(coor),
         attribute: {
-          ...item
-        }
-      })
+          ...item,
+        },
+      });
 
       // 给feature点设置样式
       iconFeature.setStyle(
         new Style({
           image: new Icon({
-            src: icon
-          })
-        })
-      )
+            src: icon,
+          }),
+        }),
+      );
 
-      this.pointFeatures.push(iconFeature)
-    })
+      this.pointFeatures.push(iconFeature);
+    });
 
     this.markPointsLayer = new VectorLayer({
       source: new VectorSource(),
-      zIndex: 1002
-    })
+      zIndex: 1002,
+    });
 
-    this.markPointsLayer.getSource().addFeatures(this.pointFeatures)
-    this.markPointsLayer.set('name', markPoints[0].type) // 添加图层类别标识
-    this.map.addLayer(this.markPointsLayer)
+    this.markPointsLayer.getSource().addFeatures(this.pointFeatures);
+    this.markPointsLayer.set('name', markPoints[0].type); // 添加图层类别标识
+    this.map.addLayer(this.markPointsLayer);
 
-    return this
+    return this;
   }
 
   // 移除标记点
@@ -70,11 +70,11 @@ class OLMarkPoints {
         .getSource()
         .getFeatures()
         .forEach((feature) => {
-          this.markPointsLayer.getSource().removeFeature(feature)
-        })
-      this.pointFeatures = []
-      this.map.removeLayer(this.markPointsLayer)
-      this.markPointsLayer = null
+          this.markPointsLayer.getSource().removeFeature(feature);
+        });
+      this.pointFeatures = [];
+      this.map.removeLayer(this.markPointsLayer);
+      this.markPointsLayer = null;
     }
 
     // this.map.getLayers().forEach((layer) => {
@@ -94,16 +94,16 @@ class OLMarkPoints {
       element,
       autoPan: true,
       autoPanAnimation: {
-        duration: 250
-      }
-    })
-    this.map.addOverlay(this.pointOverlay)
+        duration: 250,
+      },
+    });
+    this.map.addOverlay(this.pointOverlay);
   }
 
   // 移除mark点弹出
   removePointOverlay() {
-    this.map.removeOverlay(this.pointOverlay)
+    this.map.removeOverlay(this.pointOverlay);
   }
 }
 
-export default OLMarkPoints
+export default OLMarkPoints;

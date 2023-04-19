@@ -1,13 +1,13 @@
-import { defineComponent, Suspense } from 'vue'
-import axios from 'axios'
+import { defineComponent, Suspense } from 'vue';
+import axios from 'axios';
 
 export default defineComponent({
   async setup() {
-    const res = await axios.get('https://api.thecatapi.com/v1/images/search')
-    const { data } = res || {}
-    const { url } = data[0]
+    const res = await axios.get('https://api.thecatapi.com/v1/images/search');
+    const { data } = res || {};
+    const { url } = data[0];
 
-    console.warn('url', url)
+    console.warn('url', url);
     return () => {
       return (
         <Suspense>
@@ -16,7 +16,7 @@ export default defineComponent({
             123
           </div>
         </Suspense>
-      )
-    }
-  }
-})
+      );
+    };
+  },
+});

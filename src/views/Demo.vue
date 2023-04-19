@@ -19,32 +19,32 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import AsyncShow from '@/components/AsyncShow'
-import Modal from '@/components/Modal.vue'
-import { ref } from 'vue'
+import { ref } from 'vue';
+import AsyncShow from '@/components/AsyncShow';
+import Modal from '@/components/Modal.vue';
 
 export default {
   name: 'Demo',
   components: {
     AsyncShow,
-    Modal
+    Modal,
   },
   setup() {
-    const isOpen = ref(false)
+    const isOpen = ref(false);
     const onModalOpen = () => {
-      isOpen.value = true
-    }
+      isOpen.value = true;
+    };
     const onModalClose = () => {
-      isOpen.value = false
-    }
+      isOpen.value = false;
+    };
 
     return {
       isOpen,
       onModalOpen,
-      onModalClose
-    }
-  }
-}
+      onModalClose,
+    };
+  },
+};
 </script>
 
 <style lang="less">

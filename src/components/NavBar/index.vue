@@ -21,43 +21,43 @@
 </template>
 
 <script lang="ts">
-import { Menu } from 'ant-design-vue'
-import { defineComponent, ref } from 'vue'
-import { createFromIconfontCN } from '@ant-design/icons-vue'
-import { SelectInfo } from 'ant-design-vue/lib/menu/src/interface'
-import { useRouter } from 'vue-router'
+import { Menu } from 'ant-design-vue';
+import { defineComponent, ref } from 'vue';
+import { createFromIconfontCN } from '@ant-design/icons-vue';
+import { SelectInfo } from 'ant-design-vue/lib/menu/src/interface';
+import { useRouter } from 'vue-router';
 
 const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/c/font_4022896_aulyvjzw1pv.js'
-})
+  scriptUrl: '//at.alicdn.com/t/c/font_4022896_aulyvjzw1pv.js',
+});
 
-const MenuItem = Menu.Item
-const SubMenu = Menu.SubMenu
+const MenuItem = Menu.Item;
+const { SubMenu } = Menu;
 
 export default defineComponent({
   components: {
     AMenu: Menu,
     AMenuItem: MenuItem,
     ASubMenu: SubMenu,
-    IconFont
+    IconFont,
   },
   setup() {
-    const current = ref<string[]>(['mail'])
-    const router = useRouter()
+    const current = ref<string[]>(['mail']);
+    const router = useRouter();
 
     const handleSelectMenu = (data: SelectInfo) => {
-      const { item, key, selectedKeys } = data || {}
-      console.warn('handleSelectMenu', item, key, selectedKeys)
-      router.push(`/${key}`)
-    }
+      const { item, key, selectedKeys } = data || {};
+      console.warn('handleSelectMenu', item, key, selectedKeys);
+      router.push(`/${key}`);
+    };
 
     return {
       current,
       iconStyle: { verticalAlign: 'middle' },
-      handleSelectMenu
-    }
-  }
-})
+      handleSelectMenu,
+    };
+  },
+});
 </script>
 <style lang="less" scoped>
 .ant-menu-horizontal {

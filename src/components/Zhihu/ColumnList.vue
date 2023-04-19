@@ -11,12 +11,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, PropType } from 'vue';
+
 export interface ColumnProps {
-  id: number
-  title: string
-  avatar: string
-  description: string
+  id: number;
+  title: string;
+  avatar: string;
+  description: string;
 }
 
 export default defineComponent({
@@ -24,11 +25,11 @@ export default defineComponent({
   props: {
     list: {
       type: Array as PropType<ColumnProps[]>,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
-    return {}
-  }
-})
+    return {};
+  },
+});
 </script>

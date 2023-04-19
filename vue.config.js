@@ -1,30 +1,30 @@
-const { defineConfig } = require('@vue/cli-service')
-const path = require('path')
-const webpack = require('webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
+const { defineConfig } = require('@vue/cli-service');
+const path = require('path');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 function resolve(dir) {
-  return path.join(__dirname, dir)
+  return path.join(__dirname, dir);
 }
 
-const Timestamp = new Date().getTime()
+const Timestamp = new Date().getTime();
 
 module.exports = defineConfig({
   chainWebpack: (config) => {
     config.plugin('html').tap((args) => {
-      args[0].title = '我的vue3.0'
-      return args
-    })
+      args[0].title = '我的vue3.0';
+      return args;
+    });
   },
   transpileDependencies: true,
   configureWebpack: {
     name: 'vue-cesium',
     resolve: {
       alias: {
-        '@': resolve('src')
-      }
+        '@': resolve('src'),
+      },
     },
     plugins: [
       new NodePolyfillPlugin(),
@@ -32,31 +32,31 @@ module.exports = defineConfig({
         patterns: [
           {
             from: 'node_modules/cesium/Build/Cesium/Workers',
-            to: 'cesium/Workers'
+            to: 'cesium/Workers',
           },
           {
             from: 'node_modules/cesium/Build/Cesium/ThirdParty',
-            to: 'cesium/ThirdParty'
+            to: 'cesium/ThirdParty',
           },
           {
             from: 'node_modules/cesium/Build/Cesium/Assets',
-            to: 'cesium/Assets'
+            to: 'cesium/Assets',
           },
           {
             from: 'node_modules/cesium/Build/Cesium/Widgets',
-            to: 'cesium/Widgets'
-          }
-        ]
+            to: 'cesium/Widgets',
+          },
+        ],
       }),
       new webpack.DefinePlugin({
         // Define relative base path in cesium for loading assets
-        CESIUM_BASE_URL: JSON.stringify('./cesium')
+        CESIUM_BASE_URL: JSON.stringify('./cesium'),
       }),
       // 使Cesium对象实例可在每个js中使用而无须import
       new webpack.ProvidePlugin({
-        Cesium: ['cesium/Source/Cesium']
+        Cesium: ['cesium/Source/Cesium'],
       }),
-      new MonacoWebpackPlugin()
+      new MonacoWebpackPlugin(),
     ],
     module: {
       rules: [
@@ -64,11 +64,11 @@ module.exports = defineConfig({
           test: /.js$/,
           include: /(cesium)/,
           use: {
-            loader: '@open-wc/webpack-import-meta-loader'
-          }
-        }
-      ]
-    }
+            loader: '@open-wc/webpack-import-meta-loader',
+          },
+        },
+      ],
+    },
   },
   css: {
     loaderOptions: {
@@ -78,24 +78,24 @@ module.exports = defineConfig({
       // 		@import "@/assets/style/base.scss";
       // 	`,
       // },
-      //这只主题样式，修改此文件后需要重新启动，
+      // 这只主题样式，修改此文件后需要重新启动，
       less: {
         lessOptions: {
           modifyVars: {
-            //这是配置css主题色
-            'primary-color': '#fd46f6'
+            // 这是配置css主题色
+            'primary-color': '#fd46f6',
           },
-          javascriptEnabled: true
-        }
-      }
+          javascriptEnabled: true,
+        },
+      },
     },
     // 每次打包后生成的css携带时间戳
     extract: {
       filename: `css/[name].${Timestamp}.css`,
-      chunkFilename: `css/[name].${Timestamp}.css`
-    }
-  }
-})
+      chunkFilename: `css/[name].${Timestamp}.css`,
+    },
+  },
+});
 
 // const Timestamp = new Date().getTime()
 // module.exports = {

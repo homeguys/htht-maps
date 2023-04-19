@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import BaseMap from '@/components/BaseMap/index.vue'
+import BaseMap from '@/components/BaseMap/index.vue';
 
 export default {
   name: 'OL',
-  components: { BaseMap }
-}
+  components: { BaseMap },
+};
 </script>
 <style lang="less">
 .olMap {
