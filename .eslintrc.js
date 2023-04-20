@@ -24,15 +24,7 @@ module.exports = {
     //     singleQuote: true,
     //   },
     // ],
-    'vue/first-attribute-linebreak': [
-      2,
-      {
-        // 单行时，第一属性前不允许使用换行符
-        singleline: 'ignore',
-        // 多行时，第一属性前必须使用换行符
-        multiline: 'below',
-      },
-    ],
+    'vue/first-attribute-linebreak': 'off',
     semi: 'off',
     'no-undef': 'off',
     'object-curly-newline': 'off',

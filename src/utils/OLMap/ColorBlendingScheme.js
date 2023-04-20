@@ -96,4 +96,6 @@ export function setColorStroke(vectorIdValue, val, style) {
   return style;
 }
 
-export function setColorStrokeOther() {}
+export function setColorStrokeOther() {
+  console.warn('setColorStrokeOther');
+}

@@ -1,6 +1,7 @@
 <template>
-  <section id="zhihu">
-    <NavBar />
+  <section id="zhihu" class="container">
+    <!-- <NavBar /> -->
+    <column-list :list="list" />
   </section>
 </template>
 
@@ -29,13 +30,26 @@ const testData: ColumnProps[] = [
     description: '这是test3专栏，有一段非常有意思的简介，可以更新一下哦',
     avatar: 'https://img1.baidu.com/it/u=1629479163,3719818209&fm=253&fmt=auto&app=138&f=JPEG',
   },
+  {
+    id: 4,
+    title: 'test1的专栏',
+    description:
+      '这是test3专栏，有一段非常有意思的简介，可以更新一下哦这是test3专栏，有一段非常有意思的简介，可以更新一下哦这是test3专栏，有一段非常有意思的简介，可以更新一下哦',
+    avatar: 'https://img1.baidu.com/it/u=1629479163,3719818209&fm=253&fmt=auto&app=138&f=JPEG',
+  },
+  {
+    id: 5,
+    title: 'test1的专栏',
+    description: '这是test3专栏，有一段非常有意思的简介，可以更新一下哦',
+    avatar: 'https://img1.baidu.com/it/u=1629479163,3719818209&fm=253&fmt=auto&app=138&f=JPEG',
+  },
 ];
 
 export default defineComponent({
   name: 'Index',
   components: {
-    // ColumnList,
-    NavBar,
+    ColumnList,
+    // NavBar,
   },
   setup() {
     return {
@@ -48,5 +62,10 @@ export default defineComponent({
 <style lang="less">
 #zhihu {
   font-size: 12px;
+}
+
+.item {
+  height: 100px;
+  background: red;
 }
 </style>
