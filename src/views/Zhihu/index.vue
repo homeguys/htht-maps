@@ -1,15 +1,14 @@
 <template>
   <section id="zhihu" class="container">
-    <!-- <NavBar /> -->
+    <nav-bar :user="user" />
     <column-list :list="list" />
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Button } from 'ant-design-vue';
 import ColumnList, { ColumnProps } from '@/components/Zhihu/ColumnList.vue';
-import { NavBar } from '@/components/Zhihu';
+import NavBar, { UserProps } from '@/components/Zhihu/NavBar.vue';
 
 const testData: ColumnProps[] = [
   {
@@ -45,15 +44,21 @@ const testData: ColumnProps[] = [
   },
 ];
 
+const userData: UserProps = {
+  isLogin: true,
+  name: 'Mking',
+};
+
 export default defineComponent({
   name: 'Index',
   components: {
     ColumnList,
-    // NavBar,
+    NavBar,
   },
   setup() {
     return {
       list: testData,
+      user: userData,
     };
   },
 });
