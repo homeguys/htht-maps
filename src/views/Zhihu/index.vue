@@ -1,7 +1,10 @@
 <template>
-  <section id="zhihu" class="container">
+  <section id="zhihu">
     <nav-bar :user="user" />
-    <column-list :list="list" />
+    <!-- <column-list :list="list" /> -->
+    <section class="mainContent">
+      <router-view />
+    </section>
   </section>
 </template>
 
@@ -45,7 +48,7 @@ const testData: ColumnProps[] = [
 ];
 
 const userData: UserProps = {
-  isLogin: true,
+  isLogin: false,
   name: 'Mking',
 };
 
@@ -66,11 +69,12 @@ export default defineComponent({
 
 <style lang="less">
 #zhihu {
-  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.item {
-  height: 100px;
-  background: red;
+.mainContent {
+  flex: 1 1;
 }
 </style>

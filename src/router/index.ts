@@ -10,6 +10,18 @@ const routes: Array<RouteRecordRaw> = [
     path: '/zhihu',
     name: 'Zhihu',
     component: () => import(/* webpackChunkName: "zhihu" */ '../views/Zhihu/index.vue'),
+    children: [
+      {
+        path: '/zhihu/home',
+        name: 'ZhihuHome',
+        component: () => import(/* webpackChunkName: "zhihuHome" */ '../views/Zhihu/home.vue'),
+      },
+      {
+        path: '/zhihu/login',
+        name: 'ZhihuLogin',
+        component: () => import(/* webpackChunkName: "zhihuLogin" */ '../views/Zhihu/login.vue'),
+      },
+    ],
   },
   {
     path: '/cesium',
