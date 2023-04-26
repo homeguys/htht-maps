@@ -5,7 +5,6 @@
         <section class="mb-3">
           <label class="form-label">邮箱地址</label>
           <ValidateInput type="text" :rules="emialRules" v-model="emailVal" placeholder="请输入邮箱地址" />
-          <ValidateCheck v-model="checkVal" />
         </section>
         <section class="mb-3">
           <label class="form-label">密码</label>
@@ -22,16 +21,20 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { ValidateInput, ValidateForm, ValidateCheck, RulesProp } from '@/components/Zhihu';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import { ValidateInput, ValidateForm, RulesProp } from '@/components/Zhihu';
+import createMessage from '@/components/Zhihu/createMessage';
 
 export default defineComponent({
   components: {
     ValidateInput,
     ValidateForm,
-    ValidateCheck,
   },
   inheritAttrs: false,
   setup() {
+    const router = useRouter();
+    const store = useStore();
     const emailVal = ref('');
     const emialRules: RulesProp = [
       { type: 'required', message: '邮箱地址不能为空' },
@@ -44,12 +47,24 @@ export default defineComponent({
     const checkVal = ref(true);
 
     const onFormSubmit = (result: boolean) => {
-      console.warn('onFormSubmit', result);
-      console.warn('onFormSubmit data', {
-        emailVal: emailVal.value,
-        passwordVal: passwordVal.value,
-        checkVal: checkVal.value,
-      });
+      if (result) {
+        const payload = {
+          email: emailVal.value,
+          password: passwordVal.value,
+        };
+
+        store
+          .dispatch('loginAndFetch', payload)
+          .then((data) => {
+            createMessage('登录成功 2秒后跳转首页', 'success');
+            setTimeout(() => {
+              router.push('/zhihu');
+            }, 2000);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
     };
 
     return {

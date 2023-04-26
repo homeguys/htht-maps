@@ -8,13 +8,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { NavBar } from '@/components/Zhihu';
-
-const userData = {
-  isLogin: false,
-  name: 'Mking',
-};
+import store from '@/store';
 
 export default defineComponent({
   name: 'Index',
@@ -22,8 +18,9 @@ export default defineComponent({
     NavBar,
   },
   setup() {
+    const currentUser = computed(() => store.state.user);
     return {
-      user: userData,
+      user: currentUser,
     };
   },
 });
