@@ -1,12 +1,12 @@
 <template>
   <nav class="navbar bg-dark mb-4 justify-content-between px-4">
-    <a class="navbar-brand text-primary" href="#">知乎</a>
+    <router-link to="/zhihu" class="navbar-brand text-primary">知乎</router-link>
     <ul v-if="!user.isLogin" class="list-inline mb-0">
       <li class="list-inline-item">
-        <button type="button" class="btn btn-primary">登陆</button>
+        <router-link to="/zhihu/login" class="btn btn-primary">登陆</router-link>
       </li>
       <li class="list-inline-item">
-        <button type="button" class="btn btn-primary">注册</button>
+        <router-link to="/zhihu/login" class="btn btn-primary">注册</router-link>
       </li>
     </ul>
     <ul v-else class="list-inline mb-0">

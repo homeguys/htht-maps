@@ -20,7 +20,6 @@ export const emitter: any = mitt();
 export default defineComponent({
   emits: {
     formSubmit: (payload: boolean) => {
-      console.warn('emits', payload);
       if (payload) {
         return true;
       }
@@ -35,7 +34,6 @@ export default defineComponent({
     };
 
     const callback = (func?: ValidateFunc) => {
-      console.warn('callback', func);
       if (func) {
         funcArr.push(func);
       }

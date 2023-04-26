@@ -64,5 +64,6 @@
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
-  }
+  },
+  "proxy": "http://api.vikingship.xyz"
 }

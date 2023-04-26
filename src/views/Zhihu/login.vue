@@ -5,6 +5,7 @@
         <section class="mb-3">
           <label class="form-label">邮箱地址</label>
           <ValidateInput type="text" :rules="emialRules" v-model="emailVal" placeholder="请输入邮箱地址" />
+          <ValidateCheck v-model="checkVal" />
         </section>
         <section class="mb-3">
           <label class="form-label">密码</label>
@@ -21,13 +22,13 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import ValidateInput, { RulesProp } from '@/components/Zhihu/ValidateInput.vue';
-import ValidateForm from '@/components/Zhihu/ValidateForm.vue';
+import { ValidateInput, ValidateForm, ValidateCheck, RulesProp } from '@/components/Zhihu';
 
 export default defineComponent({
   components: {
     ValidateInput,
     ValidateForm,
+    ValidateCheck,
   },
   inheritAttrs: false,
   setup() {
@@ -40,8 +41,15 @@ export default defineComponent({
     const passwordVal = ref('');
     const passwordRules: RulesProp = [{ type: 'required', message: '密码不能为空' }];
 
+    const checkVal = ref(true);
+
     const onFormSubmit = (result: boolean) => {
       console.warn('onFormSubmit', result);
+      console.warn('onFormSubmit data', {
+        emailVal: emailVal.value,
+        passwordVal: passwordVal.value,
+        checkVal: checkVal.value,
+      });
     };
 
     return {
@@ -49,6 +57,7 @@ export default defineComponent({
       emialRules,
       passwordVal,
       passwordRules,
+      checkVal,
       onFormSubmit,
     };
   },

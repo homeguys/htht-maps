@@ -21,6 +21,34 @@ const routes: Array<RouteRecordRaw> = [
         name: 'ZhihuLogin',
         component: () => import(/* webpackChunkName: "zhihuLogin" */ '../views/Zhihu/login.vue'),
       },
+      {
+        path: '/zhihu/login',
+        name: 'Zhihulogin',
+        component: () => import(/* webpackChunkName: "zhihuLogin" */ '../views/Zhihu/login.vue'),
+        meta: { redirectAlreadyLogin: true },
+      },
+      {
+        path: '/zhihu/signup',
+        name: 'Zhihusignup',
+        component: () => import(/* webpackChunkName: "Zhihusignup" */ '../views/Zhihu/Signup.vue'),
+        meta: { redirectAlreadyLogin: true },
+      },
+      {
+        path: '/zhihu/create',
+        name: 'ZhihuCreate',
+        component: () => import(/* webpackChunkName: "ZhihuCreate" */ '../views/Zhihu/CreatePost.vue'),
+        meta: { requiredLogin: true },
+      },
+      {
+        path: '/zhihu/column/:id',
+        name: 'ZhihuColumn',
+        component: () => import(/* webpackChunkName: "ZhihuColumn" */ '../views/Zhihu/ColumnDetail.vue'),
+      },
+      {
+        path: '/zhihu/posts/:id',
+        name: 'ZhihuPost',
+        component: () => import(/* webpackChunkName: "ZhihuPost" */ '../views/Zhihu/PostDetail.vue'),
+      },
     ],
   },
   {
@@ -49,6 +77,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "demo" */ '../views/Demo.vue'),
   },
 ];
+
+// router.beforeEach((to, from, next) => {
+//   const { requiredLogin, redirectAlreadyLogin } = to.meta;
+
+// })
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
